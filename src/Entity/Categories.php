@@ -22,6 +22,7 @@ class Categories
     private $name;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'categories')]
+    #[ORM\JoinColumn(onDelete : 'CASCADE')]//si une categorie est supprime elle supprime les categories fils
     private $parent;
 
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
