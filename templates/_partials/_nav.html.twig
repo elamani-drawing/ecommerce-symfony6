@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="{{ path('app_main') }}">E-commerce</a>
   <button class="navbar-toggler"
     type="button"
     data-toggle="collapse"
@@ -11,10 +11,10 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">
-          Home <span class="sr-only">(current)</span>
+    <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" href="{{ path('app_main') }}">
+          Home</span>
         </a>
       </li>
       <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
