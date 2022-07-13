@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>
-      {% block title %}
-        Accueil
-      {% endblock %} - Site e-commerce Symphony 6
-    </title>
-    <link rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>" />
+	<head>
+		<meta charset="UTF-8"/>
+		<title>
+			{% block title %}
+				Accueil
+			{% endblock %}
+			- Site e-commerce Symphony 6
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>"/>
 
-    <!-- feuille de styles -->
-    <link rel="stylesheet"
-      href="{{ asset('/assets/css/bootstrap.min.css') }}" />
-    {% block stylesheets %}
+		<!-- feuille de styles -->
+		<link rel="stylesheet" href="{{ asset('/assets/css/bootstrap.min.css') }}"/> {% block stylesheets %}{% endblock %}
+		<link
+		rel="stylesheet" href="{{ asset('/assets/css/style.css') }}"/>
 
-    {% endblock %}
-    <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}" />
-
-    <!-- fichier js -->
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"
-      defer></script>
-    {% block javascripts %}
-
-    {% endblock %}
-    <script src="{{ asset('assets/js/script.js') }}" defer></script>
-  </head>
-  <body>
-    {% include '_partials/_nav.html.twig' %}
-    {% block body %}
-
-    {% endblock %}
-    {% include '_partials/_footer.html.twig' %}
-  </body>
+		<!-- fichier js -->
+		<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
+		{% block javascripts %}{% endblock %}
+		<script src="{{ asset('assets/js/script.js') }}" defer></script>
+	</head>
+	<body>
+		{% include '_partials/_nav.html.twig' %}
+		{% if app.user and app.user.isVerified == false %}
+			<div class="alert alert-warning alert-dismissible" role="alert">
+				<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+				<div class="alert-message">
+					<strong>Votre compte n'est pas activé</strong>, renvoyer le lien d'activation
+				</div>
+			</div>
+		{% endif %}
+		{% include '_partials/_flash.html.twig' %}
+		{% block body %}{% endblock %}
+		{% include '_partials/_footer.html.twig' %}
+	</body>
 </html>
